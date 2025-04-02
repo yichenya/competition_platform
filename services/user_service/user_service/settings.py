@@ -25,16 +25,24 @@ DEBUG = os.getenv('DJANGO_DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '*').split(',')
 
 # 数据库配置
+
+#DATABASES = {
+  #  'default': {
+   #     'ENGINE': 'django.db.backends.postgresql',
+   #     'NAME': 'user_service_db',
+   #     'USER': 'user_service_user',
+    #    'PASSWORD': 'password',
+     #   'HOST': 'db',
+   #     'PORT': '5432',
+ #   }
+#}
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'user_service_db',
-        'USER': 'user_service_user',
-        'PASSWORD': 'password',
-        'HOST': 'db',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
 
 # 定义 INSTALLED_APPS 列表
 INSTALLED_APPS = [
@@ -129,3 +137,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'user_service.wsgi.application'
 # ASGI_APPLICATION = 'user_service.asgi.application'
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
