@@ -1,10 +1,8 @@
 import os
 from datetime import timedelta
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # 静态文件配置
 STATIC_URL = '/static/'
@@ -38,9 +36,9 @@ DATABASES = {
     }
 }
 
-# 安装的应用
-INSTALLED_APPS += [
-     'django.contrib.admin',
+# 定义 INSTALLED_APPS 列表
+INSTALLED_APPS = [
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -62,7 +60,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
 # REST Framework 配置
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -77,13 +74,10 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
-
+# 只保留一个 ROOT_URLCONF 定义
 ROOT_URLCONF = 'user_service.urls'
 
 # Custom user model
-AUTH_USER_MODEL = 'user_service.User'
-
-# 自定义用户模型
 AUTH_USER_MODEL = 'user_service.User'
 
 # Redis 配置
@@ -99,8 +93,7 @@ CACHES = {
 
 # RabbitMQ 配置
 CELERY_BROKER_URL = 'amqp://guest:guest@rabbitmq:5672//'
-CELERY_RESULT_BACKEND = 'redis://redis:6379/0'  
-
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 
 # Celery 配置
 AUTH_PASSWORD_VALIDATORS = [
@@ -117,10 +110,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
-
-ROOT_URLCONF = 'user_service.urls'
 
 TEMPLATES = [
     {
