@@ -36,10 +36,15 @@ services:
       - redis
 
   exam_service:
-    build:
-      context: ./services/exam_service
+     build:
+      context: ./services/registration_service
+    container_name: registration_service
+    command: python manage.py runserver 0.0.0.0:8000
     ports:
-      - "8003:8000"
+      - "8001:8000"  # 将容器的 8000 端口映射到主机的 8001 端口
+    environment:
+      - DEBUG=True
+      - DATABASE_URL=postgres://registration_user:password@db:5432/registration_db
     depends_on:
       - db
       - redis
